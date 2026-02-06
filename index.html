@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Audioguía de Alberobello</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 20px;
+      background: #f8f8f8;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 1.6rem;
+      margin-bottom: 16px;
+    }
+
+    audio {
+      width: 100%;
+      margin-bottom: 24px;
+    }
+
+    .chapter {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 14px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+      cursor: pointer;
+      transition: transform 0.1s ease;
+    }
+
+    .chapter:hover {
+      transform: scale(1.01);
+    }
+
+    .number {
+      background: #0066cc;
+      color: white;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+
+    .title {
+      flex-grow: 1;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .play {
+      font-size: 1.4rem;
+      color: #0066cc;
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>🎧 Audioguía de Alberobello</h1>
+
+<audio id="audio" controls>
+  <source src="audioguia Alberobello.mp3" type="audio/mpeg">
+</audio>
+
+<div class="chapter" onclick="goTo(0)">
+  <div class="number">1</div>
+  <div class="title">Valle de Itria</div>
+  <div class="play">▶️</div>
+</div>
+
+<div class="chapter" onclick="goTo(240)">
+  <div class="number">2</div>
+  <div class="title">La historia de Alberobello</div>
+  <div class="play">▶️</div>
+</div>
+
+<div class="chapter" onclick="goTo(481)">
+  <div class="number">3</div>
+  <div class="title">El Museo del Territorio</div>
+  <div class="play">▶️</div>
+</div>
+
+<div class="chapter" onclick="goTo(533)">
+  <div class="number">4</div>
+  <div class="title">El barrio de Aia Piccola</div>
+  <div class="play">▶️</div>
+</div>
+
+<div class="chapter" onclick="goTo(583)">
+  <div class="number">5</div>
+  <div class="title">Mirador Santa Lucía</div>
+  <div class="play">▶️</div>
+</div>
+
+<div class="chapter" onclick="goTo(611)">
+  <div class="number">6</div>
+  <div class="title">Casa D'Amore</div>
+  <div class="play">▶️</div>
+</div>
+
+<div class="chapter" onclick="goTo(680)">
+  <div class="number">7</div>
+  <div class="title">Trullo Sovrano</div>
+  <div class="play">▶️</div>
+</div>
+
+<div class="chapter" onclick="goTo(734)">
+  <div class="number">8</div>
+  <div class="title">El barrio de Monti</div>
+  <div class="play">▶️</div>
+</div>
+
+<div class="chapter" onclick="goTo(783)">
+  <div class="number">9</div>
+  <div class="title">Iglesia de San Antonio</div>
+  <div class="play">▶️</div>
+</div>
+
+<div class="chapter" onclick="goTo(864)">
+  <div class="number">10</div>
+  <div class="title">Los Trulli Siamesi</div>
+  <div class="play">▶️</div>
+</div>
+
+<div class="chapter" onclick="goTo(902)">
+  <div class="number">11</div>
+  <div class="title">Historias y curiosidades</div>
+  <div class="play">▶️</div>
+</div>
+
+<div class="chapter" onclick="goTo(906)">
+  <div class="number">12</div>
+  <div class="title">La leyenda de los Trulli Siamesi</div>
+  <div class="play">▶️</div>
+</div>
+
+<div class="chapter" onclick="goTo(1031)">
+  <div class="number">13</div>
+  <div class="title">Los símbolos de los trulli</div>
+  <div class="play">▶️</div>
+</div>
+
+<script>
+  const audio = document.getElementById("audio");
+
+  function goTo(seconds) {
+    audio.currentTime = seconds;
+    audio.play();
+  }
+</script>
+
+</body>
+</html>
