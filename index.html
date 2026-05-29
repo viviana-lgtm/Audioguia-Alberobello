@@ -1,80 +1,89 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Audioguía de Alberobello</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Audioguía de Alberobello</title>
 
-  <style>
-    body {
-      font-family: system-ui, sans-serif;
-      max-width: 700px;
-      margin: 0 auto;
-      padding: 20px;
-      background: #f8f8f8;
-    }
+<style>
+body{
+  font-family:system-ui,sans-serif;
+  max-width:700px;
+  margin:0 auto;
+  padding:20px;
+  background:#f8f8f8;
+}
 
-    h1 {
-      text-align: center;
-      font-size: 1.6rem;
-      margin-bottom: 16px;
-    }
+h1{
+  text-align:center;
+  font-size:1.6rem;
+  margin-bottom:16px;
+}
 
-    audio {
-      width: 100%;
-      margin-bottom: 24px;
-    }
+audio{
+  width:100%;
+  margin-bottom:24px;
+}
 
-    .chapter {
-      background: #ffffff;
-      border-radius: 12px;
-      padding: 14px;
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
-      cursor: pointer;
-      transition: transform 0.1s ease;
-    }
+.chapter{
+  background:#fff;
+  border-radius:12px;
+  padding:14px;
+  margin-bottom:12px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  box-shadow:0 4px 10px rgba(0,0,0,.06);
+  cursor:pointer;
+}
 
-    .chapter:hover {
-      transform: scale(1.01);
-    }
+.number{
+  background:#0066cc;
+  color:#fff;
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:bold;
+  flex-shrink:0;
+}
 
-    .number {
-      background: #0066cc;
-      color: white;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      flex-shrink: 0;
-    }
+.title{
+  flex-grow:1;
+  font-weight:600;
+}
 
-    .title {
-      flex-grow: 1;
-      font-size: 1rem;
-      font-weight: 600;
-    }
+.play{
+  font-size:1.4rem;
+  color:#0066cc;
+}
 
-    .play {
-      font-size: 1.4rem;
-      color: #0066cc;
-      flex-shrink: 0;
-    }
-  </style>
+#error{
+  display:none;
+  background:#ffe5e5;
+  color:#c00000;
+  padding:10px;
+  border-radius:8px;
+  margin-bottom:15px;
+}
+</style>
 </head>
 
 <body>
 
 <h1>🎧 Audioguía de Alberobello</h1>
 
-<audio id="audio" controls>
+<div id="error">
+No se encuentra el archivo de audio. Verifica que el archivo
+<b>audioguia-alberobello.mp3</b> esté en la misma carpeta que index.html.
+</div>
+
+<audio id="audio" controls preload="metadata">
   <source src="audioguia-alberobello.mp3" type="audio/mpeg">
+  Tu navegador no soporta audio HTML5.
 </audio>
 
 <div class="chapter" onclick="goTo(0)">
@@ -109,7 +118,7 @@
 
 <div class="chapter" onclick="goTo(611)">
   <div class="number">6</div>
-  <div class="title">Casa D'Amore</div>
+  <div class="title">Casa D’Amore</div>
   <div class="play">▶️</div>
 </div>
 
@@ -156,13 +165,18 @@
 </div>
 
 <script>
-  const audio = document.getElementById("audio");
+const audio = document.getElementById('audio');
 
-  function goTo(seconds) {
-    audio.currentTime = seconds;
-    audio.play();
-  }
+audio.addEventListener('error', () => {
+  document.getElementById('error').style.display = 'block';
+});
+
+function goTo(seconds){
+  audio.currentTime = seconds;
+  audio.play();
+}
 </script>
 
 </body>
 </html>
+```
